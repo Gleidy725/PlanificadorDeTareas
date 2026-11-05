@@ -25,5 +25,6 @@ Desarrollar una aplicación web que permita gestionar tareas de manera sencilla,
 - **Bootstrap:** Framework de diseño responsivo.
 
 **🚀 Demo en vivo:**
-
+Wireframe de referencia: https://www.figma.com/design/0vrN2uKPd3EP7zkmODL7D2/Planificador-de-Tareas?node-id=0-1&t=2WBA4HIpigIlfYhc-1
 ![Tablero de Trello](image.png)
+Despliegue: https://gleidy725.github.io/PlanificadorDeTareas/

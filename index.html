@@ -1,11 +1,210 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planificador Web</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Planificador de Tareas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-    
+
+  <div class="container-fluid p-3">
+    <div class="row g-3">
+
+      <!-- Columna izquierda -->
+      <aside class="col-12 col-lg-2 d-flex flex-column gap-3">
+
+        <header class="caja text-center">
+          <h1 class="titulo-app">Planificador de Tareas</h1>
+        </header>
+
+        <nav class="caja d-flex flex-column gap-2">
+          <a href="#calendario" class="btn boton-lavanda">Calendario</a>
+          <button type="button" class="btn boton-rosa" data-bs-toggle="modal" data-bs-target="#modalTarea">
+            Agregar tarea
+          </button>
+        </nav>
+
+        <div class="caja caja-frase flex-grow-1 text-center">
+          <p class="mb-0">Frase motivacional aquí, o imagen o algo más que luego implemente xd</p>
+        </div>
+      </aside>
+
+      <!-- Columna central (Es un calendario) -->
+      <main class="col-12 col-lg-7 d-flex flex-column gap-3" id="calendario">
+
+        <div class="caja">
+          <h2 class="titulo-seccion mb-0">Calendario</h2>
+        </div>
+
+        <div class="caja text-center">
+          <h3 class="titulo-mes mb-0">Noviembre 2026</h3>
+        </div>
+
+        <section class="caja flex-grow-1">
+          <div class="table-responsive">
+            <table class="table calendario mb-0">
+              <thead>
+                <tr>
+                  <th>Lun</th>
+                  <th>Mar</th>
+                  <th>Mié</th>
+                  <th>Jue</th>
+                  <th>Vie</th>
+                  <th>Sáb</th>
+                  <th>Dom</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><button class="dia dia-otro-mes" data-bs-toggle="modal" data-bs-target="#modalTarea">26</button></td>
+                  <td><button class="dia dia-otro-mes" data-bs-toggle="modal" data-bs-target="#modalTarea">27</button></td>
+                  <td><button class="dia dia-otro-mes" data-bs-toggle="modal" data-bs-target="#modalTarea">28</button></td>
+                  <td><button class="dia dia-otro-mes" data-bs-toggle="modal" data-bs-target="#modalTarea">29</button></td>
+                  <td><button class="dia dia-otro-mes" data-bs-toggle="modal" data-bs-target="#modalTarea">30</button></td>
+                  <td><button class="dia dia-otro-mes" data-bs-toggle="modal" data-bs-target="#modalTarea">31</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">1</button></td>
+                </tr>
+                <tr>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">2</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">3</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">4</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">5</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">6</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">7</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">8</button></td>
+                </tr>
+                <tr>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">9</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">10</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">11</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">12</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">13</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">14</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">15</button></td>
+                </tr>
+                <tr>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">16</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">17</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">18</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">19</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">20</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">21</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">22</button></td>
+                </tr>
+                <tr>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">23</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">24</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">25</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">26</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">27</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">28</button></td>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">29</button></td>
+                </tr>
+                <tr>
+                  <td><button class="dia" data-bs-toggle="modal" data-bs-target="#modalTarea">30</button></td>
+                  <td><button class="dia dia-otro-mes" data-bs-toggle="modal" data-bs-target="#modalTarea">1</button></td>
+                  <td><button class="dia dia-otro-mes" data-bs-toggle="modal" data-bs-target="#modalTarea">2</button></td>
+                  <td><button class="dia dia-otro-mes" data-bs-toggle="modal" data-bs-target="#modalTarea">3</button></td>
+                  <td><button class="dia dia-otro-mes" data-bs-toggle="modal" data-bs-target="#modalTarea">4</button></td>
+                  <td><button class="dia dia-otro-mes" data-bs-toggle="modal" data-bs-target="#modalTarea">5</button></td>
+                  <td><button class="dia dia-otro-mes" data-bs-toggle="modal" data-bs-target="#modalTarea">6</button></td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <!-- Columna derecha -->
+      <aside class="col-12 col-lg-3 d-flex flex-column gap-3">
+
+        <section class="caja flex-grow-1">
+          <h2 class="titulo-seccion">Lista de tareas</h2>
+
+          <div id="listaTareas">
+            <p class="texto-vacio mb-0">Todavía no hay tareas registradas.</p>
+
+            <!--
+              Molde de la tarjeta de tarea (Tarea 2).
+              Se usará cuando las tareas se muestren con JavaScript.
+
+              <div class="card tarjeta-tarea">
+                <div class="card-body">
+                  <h3 class="card-title h6">Nombre de la tarea</h3>
+                  <p class="card-text">Descripción de la tarea</p>
+                  <p class="card-text">Fecha de entrega</p>
+                  <span class="badge etiqueta-pendiente">Estado</span>
+                </div>
+              </div>
+            -->
+          </div>
+        </section>
+
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- Modal con el formulario -->
+  <div class="modal fade" id="modalTarea" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="tituloModal">Agregar tarea</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <form id="formularioTarea" novalidate>
+          <div class="modal-body">
+
+            <div class="mb-3">
+              <label for="entradaNombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="entradaNombre">
+            </div>
+
+            <div class="mb-3">
+              <label for="entradaDescripcion" class="form-label">Descripción</label>
+              <textarea class="form-control" id="entradaDescripcion" rows="3"></textarea>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-12 col-sm-6">
+                <label for="entradaFecha" class="form-label">Fecha de entrega</label>
+                <input type="date" class="form-control" id="entradaFecha">
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="entradaEstado" class="form-label">Estado</label>
+                <select class="form-select" id="entradaEstado">
+                  <option value="">Selecciona un estado</option>
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="En proceso">En proceso</option>
+                  <option value="Completada">Completada</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="alertaError" class="alert alert-danger d-none" role="alert"></div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn boton-lavanda">Guardar</button>
+          </div>
+        </form>
+        <!-- No sé si haya otra manera de implementar el calendario porque es complejo si me toca día por día jajaja
+         Igual quiero conservar los colores que tengo. ¿Alguna idea? -->
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

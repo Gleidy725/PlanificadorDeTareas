@@ -1,0 +1,147 @@
+:root {
+  --lavanda: #b9a7f0;
+  --lavanda-oscuro: #6f55c9;
+  --lila: #e6defa;
+  --rosa: #f9cfdc;
+  --rosa-oscuro: #b0436b;
+  --crema: #fff8ea;
+  --verde: #cfeedd;
+  --verde-oscuro: #2f7a54;
+  --texto: #3a3354;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  color: var(--texto);
+  background-color: #f6eefb;
+}
+
+/* Cajas principales */
+.caja {
+  background-color: var(--crema);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(111, 85, 201, 0.15);
+}
+
+.caja-frase {
+  background-color: var(--lila);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titulo-app {
+  font-size: 1.2rem;
+  color: var(--lavanda-oscuro);
+  margin: 0;
+}
+
+.titulo-seccion {
+  font-size: 1.3rem;
+  color: var(--lavanda-oscuro);
+}
+
+.titulo-mes {
+  font-size: 1.2rem;
+}
+
+.texto-vacio {
+  color: gray;
+}
+
+/* Botones */
+.btn {
+  border-radius: 50px;
+  font-weight: 700;
+  border: none;
+}
+
+.boton-lavanda {
+  background-color: var(--lavanda);
+  color: white;
+}
+
+.boton-lavanda:hover {
+  background-color: var(--lavanda-oscuro);
+  color: white;
+}
+
+.boton-rosa {
+  background-color: var(--rosa);
+  color: var(--rosa-oscuro);
+}
+
+.boton-rosa:hover {
+  background-color: #f4b6cb;
+  color: var(--rosa-oscuro);
+}
+
+/* Calendario */
+.calendario {
+  table-layout: fixed;
+  min-width: 480px;
+}
+
+.calendario th {
+  text-align: center;
+  color: var(--lavanda-oscuro);
+  border: none;
+}
+
+.calendario td {
+  padding: 4px;
+  border: none;
+}
+
+.dia {
+  width: 100%;
+  height: 65px;
+  border: none;
+  border-radius: 14px;
+  background-color: white;
+  color: var(--texto);
+  font-weight: 700;
+}
+
+.dia:hover {
+  background-color: var(--lila);
+}
+
+.dia-otro-mes {
+  background-color: transparent;
+  color: #b5aecb;
+}
+
+/* Tarjeta de tarea (molde) */
+.tarjeta-tarea {
+  border: none;
+  border-radius: 15px;
+  background-color: white;
+}
+
+.etiqueta-pendiente {
+  background-color: var(--rosa);
+  color: var(--rosa-oscuro);
+}
+
+.etiqueta-proceso {
+  background-color: var(--lila);
+  color: var(--lavanda-oscuro);
+}
+
+.etiqueta-completada {
+  background-color: var(--verde);
+  color: var(--verde-oscuro);
+}
+
+/* Modal */
+.modal-content {
+  background-color: var(--crema);
+  border: none;
+  border-radius: 20px;
+}
+
+.modal-header, .modal-footer {
+  border: none;
+}
