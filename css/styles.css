@@ -145,3 +145,12 @@ body {
 .modal-header, .modal-footer {
   border: none;
 }
+
+/* Tarea completada */
+.tarjeta-completada {
+  background-color: var(--verde);
+}
+
+.tarjeta-completada .card-title {
+  text-decoration: line-through;
+}
