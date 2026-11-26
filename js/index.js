@@ -9,6 +9,8 @@ const entradaEstado = document.querySelector('#entradaEstado');
 
 // Creo el TaskManager que guarda las tareas
 const taskManager = new TaskManager();
+taskManager.load();
+taskManager.render();
 console.log(taskManager.tasks);
 
 
@@ -75,39 +77,45 @@ formulario.addEventListener('submit', function (evento) {
 
     // los datos son válidos, entonces se agrega la tarea
     taskManager.addTask(datos.nombre, datos.descripcion, datos.fecha, datos.estado);
+    taskManager.save();
+    taskManager.render();
     console.log(taskManager.tasks);
 
     formulario.reset();
   }
 });
 
-// Marcar o desmarcar una tarea como completada (Sprint 2 - Tarea 4)
-const botonesEstado = document.querySelectorAll('.boton-estado');
+// Click en la lista de tareas (sirve para los botones de cada tarjeta)
+const listaTareas = document.querySelector('#listaTareas');
 
-for (let i = 0; i < botonesEstado.length; i++) {
-  botonesEstado[i].addEventListener('click', function () {
-    cambiarEstadoTarea(botonesEstado[i]);
-  });
-}
+listaTareas.addEventListener('click', function (event) {
 
-// Cambia la tarjeta entre Pendiente y Completada
-function cambiarEstadoTarea(boton) {
-  const tarjeta = boton.closest('.tarjeta-tarea');
-  const etiqueta = tarjeta.querySelector('.badge');
+  // Botón de marcar o desmarcar como completada (Sprint 2 - Tarea 4)
+  if (event.target.classList.contains('boton-estado')) {
+    const parentTask = event.target.parentElement;
+    const taskId = Number(parentTask.dataset.taskId);
 
-  if (tarjeta.classList.contains('tarjeta-completada')) {
-    // volver a pendiente
-    tarjeta.classList.remove('tarjeta-completada');
-    etiqueta.classList.remove('etiqueta-completada');
-    etiqueta.classList.add('etiqueta-pendiente');
-    etiqueta.textContent = 'Pendiente';
-    boton.textContent = 'Marcar como completada';
-  } else {
-    // marcar como completada
-    tarjeta.classList.add('tarjeta-completada');
-    etiqueta.classList.remove('etiqueta-pendiente');
-    etiqueta.classList.add('etiqueta-completada');
-    etiqueta.textContent = 'Completada';
-    boton.textContent = 'Marcar como pendiente';
+    for (let task of taskManager.tasks) {
+      if (task.id === taskId) {
+        if (task.status === 'HECHO') {
+          task.status = 'PORHACER';
+        } else {
+          task.status = 'HECHO';
+        }
+      }
+    }
+
+    taskManager.save();
+    taskManager.render();
   }
-}
+
+  // Botón de eliminar (Sprint 2 - Tarea 6)
+  if (event.target.classList.contains('delete-button')) {
+    const parentTask = event.target.parentElement;
+    const taskId = Number(parentTask.dataset.taskId);
+
+    taskManager.deleteTask(taskId);
+    taskManager.save();
+    taskManager.render();
+  }
+});
