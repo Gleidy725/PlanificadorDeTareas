@@ -90,26 +90,23 @@ const listaTareas = document.querySelector('#listaTareas');
 
 listaTareas.addEventListener('click', function (event) {
 
-  // Botón de marcar o desmarcar como completada (Sprint 2 - Tarea 4)
-  if (event.target.classList.contains('boton-estado')) {
+  // Botón Mark As Done
+  if (event.target.classList.contains('done-button')) {
     const parentTask = event.target.parentElement;
     const taskId = Number(parentTask.dataset.taskId);
+    const task = taskManager.getTaskById(taskId);
 
-    for (let task of taskManager.tasks) {
-      if (task.id === taskId) {
-        if (task.status === 'HECHO') {
-          task.status = 'PORHACER';
-        } else {
-          task.status = 'HECHO';
-        }
-      }
+    if (task.status === 'DONE') {
+      task.status = 'PORHACER';
+    } else {
+      task.status = 'DONE';
     }
 
     taskManager.save();
     taskManager.render();
   }
 
-  // Botón de eliminar (Sprint 2 - Tarea 6)
+  // Botón de eliminar
   if (event.target.classList.contains('delete-button')) {
     const parentTask = event.target.parentElement;
     const taskId = Number(parentTask.dataset.taskId);

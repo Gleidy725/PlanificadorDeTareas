@@ -1,13 +1,13 @@
 // Clase que guarda y maneja las tareas 
 
 // Crea el HTML de una tarjeta de tarea
-function createTaskHtml(task) {
+function createTaskHtml(id, name, description, dueDate, status) {
   let claseTarjeta = 'card tarjeta-tarea';
   let claseEtiqueta = 'etiqueta-pendiente';
   let textoEstado = 'Pendiente';
-  let textoBoton = 'Marcar como completada';
+  let textoBoton = 'Mark As Done';
 
-  if (task.status === 'HECHO') {
+  if (status === 'DONE') {
     claseTarjeta = claseTarjeta + ' tarjeta-completada';
     claseEtiqueta = 'etiqueta-completada';
     textoEstado = 'Completada';
@@ -15,12 +15,12 @@ function createTaskHtml(task) {
   }
 
   return '<div class="' + claseTarjeta + '">' +
-    '<div class="card-body" data-task-id="' + task.id + '">' +
-      '<h3 class="card-title h6">' + task.name + '</h3>' +
-      '<p class="card-text">' + task.description + '</p>' +
-      '<p class="card-text">Fecha de entrega: ' + task.dueDate + '</p>' +
+    '<div class="card-body" data-task-id="' + id + '">' +
+      '<h3 class="card-title h6">' + name + '</h3>' +
+      '<p class="card-text">' + description + '</p>' +
+      '<p class="card-text">Fecha de entrega: ' + dueDate + '</p>' +
       '<span class="badge ' + claseEtiqueta + '">' + textoEstado + '</span>' +
-      '<button type="button" class="btn btn-sm boton-lavanda boton-estado d-block mt-2">' + textoBoton + '</button>' +
+      '<button type="button" class="btn btn-sm boton-lavanda done-button d-block mt-2">' + textoBoton + '</button>' +
       '<button type="button" class="delete-button btn btn-sm btn-danger mt-2">Eliminar</button>' +
     '</div>' +
   '</div>';
@@ -58,6 +58,19 @@ class TaskManager {
     this.tasks = newTasks;
   }
 
+  // Busca una tarea por su id
+  getTaskById(taskId) {
+    let foundTask;
+
+    for (let task of this.tasks) {
+      if (task.id === taskId) {
+        foundTask = task;
+      }
+    }
+
+    return foundTask;
+  }
+
   // Guarda las tareas en el localStorage
   save() {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
@@ -84,7 +97,7 @@ class TaskManager {
     let html = '';
 
     for (let task of this.tasks) {
-      html = html + createTaskHtml(task);
+      html = html + createTaskHtml(task.id, task.name, task.description, task.dueDate, task.status);
     }
 
     if (this.tasks.length === 0) {
